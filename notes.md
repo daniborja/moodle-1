@@ -179,9 +179,37 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 			
 		-- files
 			- /local/xxx/settings.php: 	Opciones de configuracion q vamos a tener desde el admin
-			- 
+			
 
 
+
+
+
+
+
+
+## Crear una nueva opción en el menú de administración del curso
+- --- Crearemos 1 nuevo Plugin Local q sera 1 nueva opcion en el Menu de administracion del curso
+  - No lo queremos manejar como Bloque, ni como App, ni como Theme, x tanto cae dentro de la Categoria de Plugins Locales
+  - Crearemos el    dir   con el nombre del plugin q contendra
+    - version.php
+    - idioma
+    - dir   db/
+      - Para q mas adelante podamos crear 1 table
+
+
+	- -- Iniciamos creando el      `version.php`    ya q sin este va a dar warnings
+  	- Requiere la Licencia, luego al  Documentation   tipo PHPDoc
+  	- Lo creamos en el      locale/     del root htdocs
+    	- Dentro creamos     /decalogo
+      	- Dentro creamos el     version.php y el local_decalogo.php es frankenstyle
+  				- Estos archivos necesita la    licencia    y el      PHPDoc
+  				- local_decalogo.php
+    				- Tiene las variables
+
+		-- Creamos el     local_decalogo.php     en /locale/xxx/lang/en
+			- xq configura en English
+			- Con esto, Module haria la instalacion
 
 
 
