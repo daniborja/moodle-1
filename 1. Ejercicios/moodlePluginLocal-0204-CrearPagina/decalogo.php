@@ -36,7 +36,8 @@ $PAGE->set_pagelayout('standard');
 
 // Determinar si es la primera vez que se accede (insertar) o 
 // no es la primera vez (desplegar y actualizar).
-echo $OUTPUT->header();
+// x default aqui NO es miltilenguaje
+echo $OUTPUT->header();  // trae el   header   configurado x el theme de turno
 echo html_writer::tag('h2',"Decálogo del buen profesor");
 echo html_writer::start_tag('ol');
 echo html_writer::tag('li', "Demuestre interés en su materia: Si el profesor se aburre toda la clase se aburre.");

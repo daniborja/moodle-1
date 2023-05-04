@@ -39,7 +39,7 @@ function local_decalogo_extend_settings_navigation($settingsnav, $context) {
 
     // Solo accesible dentro del menú de administración del CURSO, es decir necesitas el crear el course
     if ($settingnode = $settingsnav->find('courseadmin', navigation_node::TYPE_COURSE)) {
-        $strfoo = get_string('title', 'local_decalogo');
+        $strfoo = get_string('title', 'local_decalogo');  // title configurado en 'local_decalogo.php'
         $url = new moodle_url(
             '/local/decalogo/decalogo.php', 
             array('id' => $PAGE->course->id)
@@ -59,3 +59,6 @@ function local_decalogo_extend_settings_navigation($settingsnav, $context) {
         $settingnode->add_node($foonode);
     }
 }
+
+
+// https://moodledev.io/docs/apis/plugintypes/local

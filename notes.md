@@ -254,7 +254,10 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 - -- Creamos el      `decalogo.php`      
   - Igual q los demas, inicia con la Licencia GNU y el PHPDoc
-  - 
+  - Vamos a    llamar    al archivo      `config.php`     q es propio de Moodle
+    - Lo treamos con      `require_once`    y va a generar los objetos globales: db, output, page
+    - Nos traemos el     courseId    con el     `required_param`
+    - Creamos el   html   con el    html_writter   mencionado antes
 
 
 
