@@ -1,0 +1,1 @@
+$CFG->customstringmanager = '\local_bilingue\bilingue_string_manager';

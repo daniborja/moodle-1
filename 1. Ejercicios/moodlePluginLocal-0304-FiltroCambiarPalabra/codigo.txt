@@ -1,0 +1,5 @@
+public function filter($text, array $options = array()) {
+    global $CFG;
+    $word = $CFG->filter_mitologiagriega_word;
+    return str_replace($word, '<b>Mitología Griega</b>', $text);
+}

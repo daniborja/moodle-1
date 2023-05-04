@@ -200,19 +200,61 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 	- -- Iniciamos creando el      `version.php`    ya q sin este va a dar warnings
   	- Requiere la Licencia, luego al  Documentation   tipo PHPDoc
-  	- Lo creamos en el      locale/     del root htdocs
+  	- Lo creamos en el      local/     del root htdocs
     	- Dentro creamos     /decalogo
-      	- Dentro creamos el     version.php y el local_decalogo.php es frankenstyle
+      	- Dentro creamos el        version.php y el local_decalogo.php     es frankenstyle
   				- Estos archivos necesita la    licencia    y el      PHPDoc
   				- local_decalogo.php
     				- Tiene las variables
 
-		-- Creamos el     local_decalogo.php     en /locale/xxx/lang/en
+		-- Creamos el     `local_decalogo.php`     en       '/locale/xxx/lang/en'
 			- xq configura en English
 			- Con esto, Module haria la instalacion
 
 
 
+
+
+
+
+
+
+## Añadir una opción en el menú de administración del curso
+- --- Para agregar 1 opt en el menu de Admin de Moodle w en el      `lib.php`
+  - Damos el nombre con notacion    frankenstyle   
+	 	- En el menu tomara 1 Node adicional para el link al decalogo q creamos
+  
+
+	- -- Creamos el     `lib.php`     	
+  	- Al igual q con los demas archivos, vamos a tener la Licencia del GNU y el PHPDoc
+  	- Con el     frankenstyle     damos nombre:   `local_decalogo_extend_settings_navigation`    a la fn
+    	- Esta   fn   NO la invocamos en ningun lado, sino q se ejecuta en auto x la API de Navegacion
+      	- context es importante
+      	- con   `global`   podemos acceder a Variables Globales de Moodle
+
+		-- Asi creamos el el       node de url       para cargar otra page
+
+
+
+
+
+
+
+## Crear la página a desplegar
+- --- En el vide anterior creamos el param y la url para gargar 1 pagina custom
+  - Vamos a aprender a crear Distintos Tipos de Paginas y de Objetos Globales
+
+	- El archivo      `config.php`      crea las Variables Globales (anexo B)
+  	- El objeto      `$PAGE`      se encarga de la configuracion de la pagina
+    	- De sus diferentes elementos, pero No los va a desplegar
+  	- El objeto      `$OUTPUT`      se encarga de desplegar los Elementos de la Page
+		 	- Por eso lo manejamos en conjunto con    $PAGE
+  	- El objeto      `$DB`      maneja la DB	
+
+
+- -- Creamos el      `decalogo.php`      
+  - Igual q los demas, inicia con la Licencia GNU y el PHPDoc
+  - 
 
 
 

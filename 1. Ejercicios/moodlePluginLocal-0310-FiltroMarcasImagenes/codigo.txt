@@ -1,0 +1,19 @@
+$picurl = new moodle_url('/filter/marcas/pix/centauro.jpg');
+$pic = html_writer::tag('img', '', 
+        array('src' => $picurl, 'alt' => 'Centauro'));
+$text = str_replace('@centauro@', $pic, $text);
+
+$picurl = new moodle_url('/filter/marcas/pix/fenix.jpg');
+$pic = html_writer::tag('img', '', 
+        array('src' => $picurl, 'alt' => 'Ave Fénix'));
+$text = str_replace('@fenix@', $pic, $text);
+
+$picurl = new moodle_url('/filter/marcas/pix/gargola.png');
+$pic = html_writer::tag('img', '', 
+        array('src' => $picurl, 'alt' => 'La gárgola'));
+$text = str_replace('@gargola@', $pic, $text);
+
+$picurl = new moodle_url('/filter/marcas/pix/pegaso.jpg');
+$pic = html_writer::tag('img', '', 
+        array('src' => $picurl, 'alt' => 'El pegaso'));
+$text = str_replace('@pegaso@', $pic, $text);
