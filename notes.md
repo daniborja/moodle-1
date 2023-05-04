@@ -267,8 +267,42 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 
 
+## Crear diferentes versiones de idiomas
+- --- Lo q se hizo en el anterior video es manejar las   strings   directamente en el html, lo cual NOOO es lo recomendado hacerlo dentro de Moodle
+  - Para  w  con ese contenido se una el     `get_string()`    que es parte del    "API STRING"    de Moodle
+    - X medio de la fn    `getString()`, del API String, podemos    "traducir"   a != idiomas
+      - Es una traduccion entre comillas, xq Moodle no lo traduce, sino q TOMO la String para el Idioma Seleccionado en Moodle
+        - La tarea de realizar la Traduccion es de nosotros
 
 
+	- -- Creamos el     `local_decalogo.php`   para English    en  'local/decalogo/lang/en'
+  	- Q tiene las   strings    con su key y value, a los q se hara referencia desde el    `decalogo.php`
+    	- Desde el    decalogo.php    se traera esas strs con el       "getString()"
+			`				$string['pluginname'] = 'Decalogue of the good teacher';`
+
+	- -- Creamos el     `local_decalogo.php`    para Spanish en  'local/decalogo/lang/es'
+  	- Asi tenemos las     strings      con su key y value para traerlas en la raiz de la carpeta del plugin
+  	- El nombre del   /dir   donde va este locale debe ser el MISMO nombre q tenemos instalado como idioam
+    	- Si instalamos el Pack de Idioma de Espaniol de Mexico      (es_mx)     
+      	- Entonces el   dir deberia ser       /es_mx,  pero como instale espanil internacional use   /es
+		- Para que se apliquen los cambios      `Purgamos la Cache`
+		- Cabe recalcar q es  _decalogo xq es en frankenstyle con el nombre del plugin
+
+	- -- Modificamos el     `decalogo.php`     para q traiga las strings con      "getString()"
+    	- Usamos el     `getString()`      para traer las strings en auto deacuerdo al title
+
+	- -- En este punto, ya trae las strings de acuerdo al Language seleccionado en Moodle
+
+
+
+
+
+
+
+
+
+## Quitar la página principal o “home”
+- --- 
 
 
 

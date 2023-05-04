@@ -37,7 +37,7 @@ $PAGE->set_pagelayout('standard');
 // Determinar si es la primera vez que se accede (insertar) o 
 // no es la primera vez (desplegar y actualizar).
 echo $OUTPUT->header();
-echo html_writer::tag('h2',get_string('title', 'local_decalogo'));
+echo html_writer::tag('h2',get_string('title', 'local_decalogo'));  // (key del str, nombre del plugin en frankenstyle), estas key y vlues los trae el    /lang/**/local_decalogo.php
 echo html_writer::start_tag('ol');
 echo html_writer::tag('li', get_string('op1', 'local_decalogo'));
 echo html_writer::tag('li', get_string('op2', 'local_decalogo'));
