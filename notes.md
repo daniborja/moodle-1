@@ -88,6 +88,8 @@
   - Podemos activar el modo Depuracion
     - Para depurar la cache
 
+	-- El modo   Developer    nos va a mostrar errores en moodle q se generen x codigo q metimos
+
 
 
 
@@ -161,6 +163,7 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
         - Creamos el archivo     `version.php`
   				- Solo con este archivo se podra instalar el Plugin, se hara 1 instalacion vacia, pero no dara error.
   				- Y se va a     Crear 1 Table en DB    q se va a llamar     locale_PLUGIN-NAME
+				
 
 		-- Caracteristicas Estandar del Complemento:
 			- version.php		version del script q debe incrementarse despues d los cambios
@@ -180,6 +183,23 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 		-- files
 			- /local/xxx/settings.php: 	Opciones de configuracion q vamos a tener desde el admin
 			
+		-- Lang:
+		File path: `/lang/en/plugintype_pluginname.php`
+
+
+	```sh
+		# URL  version.php
+		https://docs.moodle.org/dev/version.php
+		https://moodle.org/plugins/mod_attendance/versions
+
+		# para el $plugin->requires
+		https://moodledev.io/general/releases#moodle-41-lts
+
+		# Plugin files
+		https://moodledev.io/docs/apis/commonfiles
+		https://docs.moodle.org/dev/Plugin_files
+	```
+
 
 
 
@@ -232,7 +252,26 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
       	- context es importante
       	- con   `global`   podemos acceder a Variables Globales de Moodle
 
-		-- Asi creamos el el       node de url       para cargar otra page
+
+    - -- Los archivos de     Lan    son afectados x Cache, asi q debemos purgarla para ver cambios
+			-- Asi creamos el el       node de url       para cargar otra page
+    		https://moodledev.io/docs/apis/commonfiles#libphp
+
+    	- -- Con esto  ya nos crea el  node/espacio  en   settings (engrane)   del Course
+      	- Al desplegarlo ya puedo ver este nodo, pero lleva a 404 xq aun NO se implementa la page
+    		- Para verlo tuve q purgar la cache
+
+
+
+
+
+		-- URL
+			https://moodledev.io/docs/apis/commonfiles#libphp
+			https://docs.moodle.org/dev/Plugin_files
+
+			https://moodledev.io/docs/apis/plugintypes/local
+			https://moodledev.io/docs/apis/core/navigation
+
 
 
 
@@ -241,18 +280,18 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 
 ## Crear la página a desplegar
-- --- En el vide anterior creamos el param y la url para gargar 1 pagina custom
+- --- En el video anterior creamos el param y la url para agregar 1 pagina custom
   - Vamos a aprender a crear Distintos Tipos de Paginas y de Objetos Globales
 
-	- El archivo      `config.php`      crea las Variables Globales (anexo B)
+	- El archivo      `config.php`      trae las Variables Globales (anexo B) en el Module Core
   	- El objeto      `$PAGE`      se encarga de la configuracion de la pagina
     	- De sus diferentes elementos, pero No los va a desplegar
-  	- El objeto      `$OUTPUT`      se encarga de desplegar los Elementos de la Page
+  	- El objeto      `$OUTPUT`      se encarga de mostrar los Elementos de la Page
 		 	- Por eso lo manejamos en conjunto con    $PAGE
   	- El objeto      `$DB`      maneja la DB	
 
 
-- -- Creamos el      `decalogo.php`      
+- -- Creamos el      `decalogo.php`      en el root del plugin 
   - Igual q los demas, inicia con la Licencia GNU y el PHPDoc
   - Vamos a    llamar    al archivo      `config.php`     q es propio de Moodle
     - Lo treamos con      `require_once`    y va a generar los objetos globales: db, output, page
@@ -260,6 +299,11 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
     - Creamos el   html   con el    html_writter   mencionado antes
 
 
+- -- En este punto, gracias al Output ya se muestra la page
+
+
+	-- URL:
+			https://docs.moodle.org/dev/Page_API#.24PAGE_The_Moodle_page_global
 
 
 
@@ -267,8 +311,9 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 
 
-## Crear diferentes versiones de idiomas
-- --- Lo q se hizo en el anterior video es manejar las   strings   directamente en el html, lo cual NOOO es lo recomendado hacerlo dentro de Moodle
+
+## Crear diferentes versiones de Idiomas
+- --- Lo q se hizo en el anterior video es manejar las   strings   directamente en el html, lo cual NOOO es lo recomendado hacerlo dentro de Moodle, xq se debe usar el      `API String`     de Moodle
   - Para  w  con ese contenido se una el     `get_string()`    que es parte del    "API STRING"    de Moodle
     - X medio de la fn    `getString()`, del API String, podemos    "traducir"   a != idiomas
       - Es una traduccion entre comillas, xq Moodle no lo traduce, sino q TOMO la String para el Idioma Seleccionado en Moodle
@@ -295,6 +340,10 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 
 
+		-- URL:
+				https://docs.moodle.org/dev/String_API#get_string.28.29
+
+
 
 
 
@@ -302,7 +351,21 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 
 ## Quitar la página principal o “home”
-- --- 
+- --- Este pugin local nos ayudara a Quitar el Home
+  - Dentro del API de Navegacion tendremos 2 callbacks q se van a llamar en auto
+    - 1 cb:   extender la navegacion
+    - 2 cb:		extender la configuracion
+		
+  - Estas   fn   de callback se llaman c/vez q el User esta Viendo 1 Pagina dentro del Modulo y Solo deben Extender la navegacion del mismo
+    - Function:    local_{plugin_name}_extends_navigations(global_navigation $nav)
+    - Settingn navigation: q ya lo usamos
+
+	- -- Creamos el      `version php`      en 'local/quitahome/version.php
+  	- l 
+
+	- -- Creamos el     `lib.php`     en el root del nuevo plugin
+  	- `local_quitahome_extend_navigation()`  busca la page establecida
+
 
 
 

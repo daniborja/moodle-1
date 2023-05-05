@@ -22,6 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
 function local_decalogo_extend_settings_navigation($settingsnav, $context) {
     global $CFG, $PAGE;
 
@@ -37,24 +38,26 @@ function local_decalogo_extend_settings_navigation($settingsnav, $context) {
         return;
     }
 
-    // Solo accesible dentro del menú de administración del CURSO, es decir necesitas el crear el course
+    // Solo accesible dentro del menú de administración del CURSO, es decir necesitas el crear el course // coursadmin es el q tenemos dentro del engrane
+			// convencion para variables, en minus y todod unido
     if ($settingnode = $settingsnav->find('courseadmin', navigation_node::TYPE_COURSE)) {
         $strfoo = get_string('title', 'local_decalogo');  // title configurado en 'local_decalogo.php'
         $url = new moodle_url(
-            '/local/decalogo/decalogo.php', 
+            '/local/decalogo/decalogo.php', // execute fn decalogo.php
             array('id' => $PAGE->course->id)
         );
 
+				// creamos el nodo al q vamos a meter la url en el    courseadmin
         $foonode = navigation_node::create(
             $strfoo,
             $url,
             navigation_node::NODETYPE_LEAF,
             'decalogo',
             'decalogo',
-            new pix_icon('t/addcontact', $strfoo)
+            new pix_icon('t/addcontact', $strfoo)  // pix_icon t: todos los icons (pix archivos)
         );
         if ($PAGE->url->compare($url, URL_MATCH_BASE)) {
-            $foonode->make_active();
+            $foonode->make_active();	// lo hacemos active
         }
         $settingnode->add_node($foonode);
     }
@@ -62,3 +65,4 @@ function local_decalogo_extend_settings_navigation($settingsnav, $context) {
 
 
 // https://moodledev.io/docs/apis/plugintypes/local
+// https://moodledev.io/docs/apis/core/navigation

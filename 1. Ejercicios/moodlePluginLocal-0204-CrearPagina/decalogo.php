@@ -22,22 +22,23 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-require_once('../../config.php');
+require_once('../../config.php');  // habilita los Objetos Globales:
 global $DB, $OUTPUT, $PAGE;
 
 // Verifique todas las variables requeridas.
-$courseid = required_param('id', PARAM_INT);
+$courseid = required_param('id', PARAM_INT); // get del courseId
 
-require_login($courseid);
+require_login($courseid);	// verificar q esta logueado
 
 // Definimos nuestra página
 $PAGE->set_url('/local/decalogo/decalogo.php', array('id' => $courseid));
-$PAGE->set_pagelayout('standard');
+$PAGE->set_pagelayout('standard');	// trae el Layout 'standard' del theme utilizado, asi generara la pagina establecida dentro de los Layouts
+
 
 // Determinar si es la primera vez que se accede (insertar) o 
 // no es la primera vez (desplegar y actualizar).
 // x default aqui NO es miltilenguaje
-echo $OUTPUT->header();  // trae el   header   configurado x el theme de turno
+echo $OUTPUT->header();  // creacion del header
 echo html_writer::tag('h2',"Decálogo del buen profesor");
 echo html_writer::start_tag('ol');
 echo html_writer::tag('li', "Demuestre interés en su materia: Si el profesor se aburre toda la clase se aburre.");

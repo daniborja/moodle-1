@@ -24,3 +24,6 @@
 
 $string['pluginname'] = 'Decálogo del buen profesor';
 $string['title'] = 'Decálogo del buen profesor';
+
+
+		// https://moodledev.io/docs/apis/commonfiles

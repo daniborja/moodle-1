@@ -22,6 +22,10 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$plugin->component = 'local_decalogo';
-$plugin->version = 2021110700;
-$plugin->requires = 2019052000; // Moodle 3.7
+$plugin->component = 'local_decalogo';	// nombre del plugin - frankenstyel: type_name
+$plugin->version = 2021110700;	// version es la fecha: yyyy-MM-dd HH
+$plugin->requires = 2019052000; // version de Moodle 3.7
+
+
+	// https://docs.moodle.org/dev/version.php
+	// https://moodledev.io/docs/apis/commonfiles/version.php
