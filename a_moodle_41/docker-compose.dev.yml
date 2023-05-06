@@ -26,8 +26,10 @@ services:
       # ALLOW_EMPTY_PASSWORD is recommended only for development.
       - ALLOW_EMPTY_PASSWORD=yes
     volumes:
-      - 'moodle_data_m1:/bitnami/moodle'
-      - 'moodledata_data_m1:/bitnami/moodledata'
+      - './moodle_data_m1:/bitnami/moodle'
+      - './moodledata_data_m1:/bitnami/moodledata'
+      # - 'moodle_data_m1:/bitnami/moodle'
+      # - 'moodledata_data_m1:/bitnami/moodledata'
     depends_on:
       - mariadb
 
