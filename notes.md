@@ -351,23 +351,36 @@ array('class'=>'generaltable', 'id'=>'mytable')); ?>
 
 
 ## Quitar la página principal o “home”
-- --- Este pugin local nos ayudara a Quitar el Home
-  - Dentro del API de Navegacion tendremos 2 callbacks q se van a llamar en auto
+- --- Este pugin local nos ayudara a Quitar el La pagina Pinrcipal / Home
+  - Vamos a suponer q no se quiere tener la home para la nav de courses y demas
+  - Dentro del 		 `API de Navegacion`		  tendremos 2 callbacks q se van a llamar en auto
     - 1 cb:   extender la navegacion
     - 2 cb:		extender la configuracion
+      - El q usamos para generar ese nodo q nos permite ir a otra page
+	- Estas      fn callback      se llaman cada vez q el usuario esta viendo 1 pagina dentro del modulo y solo deben extender la navegacion del mismo.
+  	- Si no existen, se toma el original, y si existen, se hace lo q se llama la sustitucion/anulacion
+    	- s
+
+				https://moodledev.io/docs/apis/core/navigation#plugin-callbacks
 		
   - Estas   fn   de callback se llaman c/vez q el User esta Viendo 1 Pagina dentro del Modulo y Solo deben Extender la navegacion del mismo
     - Function:    local_{plugin_name}_extends_navigations(global_navigation $nav)
     - Settingn navigation: q ya lo usamos
 
 	- -- Creamos el      `version php`      en 'local/quitahome/version.php
-  	- l 
+  	
 
-	- -- Creamos el     `lib.php`     en el root del nuevo plugin
+	- -- Creamos el     `lib.php`     en el root del nuevo plugin, este    lib   es el q tiene los callbacks
   	- `local_quitahome_extend_navigation()`  busca la page establecida
+    	- Verificamos en el    navigation    q se encuentre el   home   
+      	- CUando lo encuentra lo eliminamos con el    remove()    para q no sea accsesible
 
 
 
+	-- URL
+		- Navigation API:		https://moodledev.io/docs/apis/core/navigation
+												https://moodledev.io/docs/apis/core/navigation#plugin-callbacks
+		- Output Callbacks:	
 
 
 
